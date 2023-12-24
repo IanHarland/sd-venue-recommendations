@@ -98,6 +98,9 @@ class Venues:
             for venue in self.venues:
                 if venue[index].upper() == choices_list[int(user_input_2) - 1]:
                     print('\n' + '--- ' + venue[0] + ' ---' + '\n' + venue[4] + '\n')
+            user_input_3 = input(f"\nWould you like to search for another {attributes_string_list[index].upper()}? ('y' or 'n')\n: ")
+            if user_input_3 == 'y':
+                self.choose_attribute_item(index)
         else:
             user_input_3 = input(f"\nThere are no results from your search. Would you like to search for another {attributes_string_list[index].upper()}? ('y' or 'n')\n: ")
             if user_input_3 == 'y':
