@@ -1,4 +1,5 @@
 ### LOGOS ###
+
 logo = '''\n\n .d8888b.  8888888b.      888      d8b                       888b     d888                   d8b          
 d88P  Y88b 888  "Y88b     888      Y8P                       8888b   d8888                   Y8P          
 Y88b.      888    888     888                                88888b.d88888                                
@@ -23,6 +24,8 @@ Y88b  d88P Y88..88P Y88..88P Y88b 888 888 d88P Y88b 888 Y8b.      "
                                                 "Y88P"               '''
 
 print(logo)
+
+### INPUT VENUES BELOW ###
 ### NAME, LOCATION, SIZE, STYLE, ADDRESS ###
 
 venues = [['Music Box', 'downtown', 'large', 'touring bands', '1337 India St, San Diego, CA 92101'], ['The Merrow', 'Hillcrest', 'medium', 'local artists', '1271 University Ave, San Diego, CA 92103'], ['Humphrey\'s By the Bay', 'point loma', 'ampitheater', 'touring bands', '2241 Shelter Island Dr, San Diego, CA 92106'], ['The Rady Shell', 'downtown', 'ampitheater', 'classical', '222 Marina Park Way, San Diego, CA 92101'], ['The Observatory', 'North Park', 'large', 'touring bands', '2891 University Ave, San Diego, CA 92104'], ['The House of Blues', 'downtown', 'large', 'touring bands', '1055 Fifth Ave, San Diego, CA 92101'], ['Quartyard', 'downtown', 'Medium(outdoors)', 'local artists', '1301 Market St, San Diego, CA 92101'], ['Brick By Brick', 'downtown', 'medium', 'metal', '1130 Buenos Ave, San Diego, CA 92110'], ['Dizzy\'s', 'downtown', 'medium', 'jazz', '1717 Morena Blvd, San Diego, CA 92110'], ['SOMA', 'point loma', 'large', 'punk', '3350 Sports Arena Blvd suite I, San Diego, CA 92110'], ['The Casbah', 'downtown', 'medium', 'rock', '2501 Kettner Blvd, San Diego, CA 92101'], ['Patrick\'s Gaslamp Pub', 'downtown', 'small', 'blues', '428 F St, San Diego, CA 92101'], ['Blackrail Kitchen & Bar', 'carlsbad', 'medium', 'jazz', '6981 El Camino Real, Carlsbad, CA 92009'], ['Seven Grand', 'north park', 'small', 'local artists', '3054 University Ave, San Diego, CA 92104'], ['Queen Bees Art and Cultural Center', 'north park', 'medium', 'local artists', '3925 Ohio St, San Diego, CA 92104'], ['The Kraken', 'cardiff', 'small', 'rock', '2531 S Coast Hwy 101, Cardiff, CA 92007'], ['Belly Up', 'solana beach', 'large', 'touring bands', '143 S Cedros Ave, Solana Beach, CA 92075'], ['Mr. Peabody\'s', 'encinitas', 'small', 'local artists', '136 Encinitas Blvd, Encinitas, CA 92024'], ['The Roxy', 'encinitas', 'medium', 'local artists', '517 S Coast Hwy 101, Encinitas, CA 92024'], ['1st St. Bar', 'encinitas', 'small', 'rock', '656 S Coast Hwy 101, Encinitas, CA 92024'], ['The Jazzy Wishbone', 'oceanside', 'small', 'jazz', '234 S Coast Hwy, Oceanside, CA 92054'], ['The Jazz Lounge', 'college area', 'small', 'jazz', '6818 El Cajon Blvd, San Diego, CA 92115'], ['Tio Leo\'s', 'downtown', 'medium', 'jazz', '5302 Napa St, San Diego, CA 92110'], ['North Island Credit Union Ampitheater', 'chula vista', 'ampitheater', 'touring bands', '2050 Entertainment Cir, Chula Vista, CA 91911'], ['Soda Bar', 'city heights', 'medium', 'local artists', '3615 El Cajon Blvd, San Diego, CA 92104'], ['Kensington Club', 'Kensington', 'medium', 'local artists', '4079 Adams Ave, San Diego, CA 92116']]
@@ -56,6 +59,7 @@ class Venues:
         self.name = "Venues"
         self.venues = venues
     
+    ### METHOD TO CHOOSE WHICH ATTRIBUTE TO SEARCH BY ###
     def choose_attribute_index(self):
         user_choice = input("\nHow would you like to search?\n\n1 - Venue Location\n2 - Venue Size\n3 - Musical Style\n\n: ")
         while (user_choice.isdigit() == False) or int(user_choice)<1 or int(user_choice) > 3:
@@ -63,6 +67,7 @@ class Venues:
         user_choice = int(user_choice)
         return user_choice
     
+    ### *DISCARDED* METHOD TO SEARCH AND DISPLAY CHOICES BY CHOOSING FROM LIST###
     def choose_attribute(self, index):
         att_string = ""
         count = 1
@@ -75,8 +80,13 @@ class Venues:
         user_choice = int(user_choice)
         return user_choice
     
+    ### METHOD TO SEARCH AND DISPLAY CHOICES BY TYPING LETTERS ###
     def choose_attribute_item(self, index):
+
+        ## USERS SEARCH LETTERS ##
         user_input_1 = input(f"\n\nType the first few letters of the {attributes_string_list[index].upper()} you would like to search for:\n\n").upper()
+
+        ## LIST CREATED FOR USER TO CHOOSE OPTIONS ##
         choices_list = []
         choices_string = ''
         count = 1
@@ -85,6 +95,8 @@ class Venues:
                 if user_input_1 == item[:len(user_input_1)]:
                     if item not in choices_list:
                         choices_list.append(item)
+        
+        ## DISPLAY RESULTS ## 
         if len(choices_list) != 0:
             for choices in choices_list:
                 choices_string += str(count) + ' - ' + choices + '\n'
